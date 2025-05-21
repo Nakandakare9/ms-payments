@@ -91,6 +91,16 @@ public class PaymentService {
                 throw new QrCodeException("Empty response from payment service");
             }
 
+            PaymentEntity payment = new PaymentEntity();
+            payment.setPaymentValue(dto.amount().doubleValue());
+            payment.setDate(new Date());
+            payment.setMethod("PIX");
+            payment.setStatus(response.getBody().status());
+            payment.setIdClient(Long.parseLong(dto.customerId()));
+            payment.setIdProduct(Long.parseLong(dto.orderId()));
+
+            repository.save(payment);
+
             return response.getBody();
 
         } catch (RestClientException e) {
