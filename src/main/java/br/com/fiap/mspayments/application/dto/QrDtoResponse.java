@@ -9,10 +9,8 @@ public record QrDtoResponse(
 
         String status,
 
-        String description,
+        String description
 
-        @JsonProperty("additional_data")
-        AdditionalData additionalData
 ) {
     public record AdditionalData(
             @JsonProperty("transaction_id")

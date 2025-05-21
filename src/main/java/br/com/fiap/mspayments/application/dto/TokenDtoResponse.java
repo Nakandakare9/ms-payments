@@ -10,7 +10,6 @@ public record TokenDtoResponse(
         String tokenType,
 
         @JsonProperty("expires_in")
-        Integer expiresIn,
+        Integer expiresIn
 
-        String scope
 ) {}
